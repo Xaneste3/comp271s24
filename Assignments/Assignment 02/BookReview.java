@@ -3,10 +3,6 @@ import java.net.URLConnection;
 import java.util.Scanner;
 import java.io.InputStream;
 
-/*
-NO IMPORT STATEMENTS. NO CALLS TO SYSTEM.anything, except for 
-System.out.println or print or printf as needed.
- */ 
 public class BookReview {
 
     /**
@@ -27,11 +23,44 @@ public class BookReview {
             bookScanner = null;
         }
         return bookScanner;
-    } // method connecttoBook
+    } 
+
+    public static String scanBook(Scanner scanner) {
+        String words = "";
+        while(Scanner.NextLine()) {
+            words += scanner.nextLine();     
+        }
+        return words;
+
+    }
+
+    public static int uniqueWordCount(String words) {
+        String[] Book = words.toLowerCase().replaceAll("[^a-zA-Z0-9 ]");
+        DynamicArray<String> uniqueWords = new DynamicArray<>();
+        for (String word : book) {
+            if (!word.isEmpty() && !uniqueWords.contains(word)) {
+                uniqueWords.add(word);
+            }
+        }
+        return uniqueWords.size();
+    } 
 
     public static void main(String[] args) {
-        // https://gutenberg.org/cache/epub/98/pg98.txt is a link
-        // to the text of "Tale of Two Cities" from Project Gutenberg
         String book = "https://gutenberg.org/cache/epub/98/pg98.txt";
-    } // method main
-} // class BookReview
+
+        Scanner bookScanner = connectToBook(book);
+
+        if (bookScanner.equals(null)) {
+            System.out.print("No connection");
+            return;
+
+            String words = scanBook(bookScanner);
+
+        
+        int uniqueWords = uniqueWordCount(words);
+
+        System.out.print("Number of Unique Words: " + uniqueWords);
+
+    } 
+} 
+}// class BookReview
