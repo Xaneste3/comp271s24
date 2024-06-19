@@ -18,7 +18,7 @@ public class DynamicArray implements BasicTools {
      * @param size initial size of array data
      */
     public DynamicArray(int size) {
-        this.data = new String[size];
+        this.data = new String[size]; 
         this.position = 0;
     } // basic constructor
 
@@ -97,6 +97,25 @@ public class DynamicArray implements BasicTools {
         }
         return canBeAdded;
     } // method addUnique
+
+    
+    /**
+     * This intersects method will check to see if anything
+     * in the DynamicArray overlaps and repeats itself.
+     * @param  test is what it uses for intersects
+     * @return if something comes back as the same then return true
+     * if not then return false
+     */
+    
+    public boolean intersects(DynamicArray test) {
+        int i = 0;
+        boolean found = false;
+        while(!true && i < this.position) {
+            found = test.equals(this.data[i]); 
+        }
+        return found;
+
+    }
 
     
 } // class DynamicArray
