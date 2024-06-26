@@ -12,7 +12,7 @@ public class TrainLine {
      * is presently the last station in the line. The new station is added after 
      * that last station. 
      * 
-     * @param name String with name of new station to add
+     * @param chicago String with name of new station to add
      */
     public void addStation(String name) {
         // Create a new station object with the given name
@@ -44,4 +44,27 @@ public class TrainLine {
             currentStation.setNext(newStation);
         }
     } // method addStation
+
+    /**
+     * This contains method will return true if there is a station that has a name in this object.
+     * If there is not name that is found it will return false.
+     * 
+     * 
+     */
+    
+    public boolean contains(String name) {
+        boolean found = false;
+        if (this.head != null) {
+            newStation check = this.head;
+            while(check != null) {
+                while (check != found && !check.getName().equals(name)) {
+                    check = check.getNext();
+                }
+                
+                return found;
+
+            }
+
+        }
+    } //method contains
 }

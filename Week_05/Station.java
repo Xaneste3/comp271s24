@@ -12,7 +12,7 @@ public class Station {
     /**
      * A simple constructor to instantiate a Station object with a given name
      * but unknown (null) next station.
-     * @param name
+     * @param name The name of the train station
      */
     public Station(String name) {
         this.name = name;
@@ -22,7 +22,7 @@ public class Station {
     /**
      * Mutator for next
      * 
-     * @param next
+     * @param next The next station in the train line
      */
     public void setNext(Station next) {
         this.next = next;
@@ -45,6 +45,10 @@ public class Station {
      */
     public Station getNext() {
         return this.next;
-    } // method getNext()
+    } // method getNext
+
+    public String getName() {
+        return this.name;
+    } // method getName
     
 } // class Station
