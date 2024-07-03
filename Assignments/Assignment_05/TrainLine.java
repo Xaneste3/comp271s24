@@ -155,4 +155,19 @@ public class TrainLine {
         }
         return found ? index: -1;
     } // method indexOf
+
+    public void append(TrainLine next) {
+        if (next != null && next.head != null) {
+            if (this.head == null) {
+                
+                this.tail = next.tail;
+                this.head = next.head;
+            }
+            else {
+                this.tail.setNext(next.head);
+            }
+
+            this.numberOfStations += next.numberOfStations;
+        }
+    }
 }

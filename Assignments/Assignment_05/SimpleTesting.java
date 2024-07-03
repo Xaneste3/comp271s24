@@ -22,5 +22,27 @@ public class SimpleTesting {
         // Test non existent
         boolean nonExisting = (redLineSB.indexOf(NON_EXISTENT) == -1);
         System.out.printf("\n\nSequence test: %s", (nonExisting ? PASS : FAIL));
+
+        TrainLine nextLine = new TrainLine();
+        String[] nextStationNames = { "Bryn Mawr", "Argyle", "Wilson"};
+        for (String name : nextStationNames) {
+            nextLine.addStation(name);
+        }
+
+        redLineSB.append(nextLine);
+
+        String[] newStationNames = {"Howard", "Jarvis", "Morse", 
+                                "Loyola", "Granville", "Thorndale",
+                                "Bryn Mawr", "Argyle", "Wilson"};
+        
+        boolean appendSequence = true;
+        for(int i = 0; i < newStationNames.length; i++) {
+            appendSequence = (redLineSB.indexOf(newStationNames[i]) == i);
+            i++;
+        }
+        System.out.printf("\n\nAppend sequence test: %s", (appendSequence ? PASS : FAIL));
+        
+
+
     }
 }
