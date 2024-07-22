@@ -9,6 +9,7 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
 
     /** The last node of the linked list */
     private Node tail;
+<<<<<<< HEAD
 
     /**Initializes the SimpleLinkedList */
     public SimpleLinkedList() {
@@ -106,3 +107,7 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
     }
 
 }// class SimpleLinkedList
+=======
+    
+} // class SimpleLinkedList
+>>>>>>> 21068c37f6c46913699f398e1438a1eaeb7ba5c4
