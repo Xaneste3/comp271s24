@@ -230,9 +230,10 @@ public class TrainLine {
         }
 
         else {
+        //Makes sure that the Strings can be used correctly
         StringBuilder stationNames = new StringBuilder();
         Station current = this.head;
-
+        //While loop to avoid for loop and to make sure that station names are on one line by themselves
         while (current != null) {
             stationNames.append(current.getName()).append("\n");
             current = current.getNext();          
@@ -271,13 +272,15 @@ public class TrainLine {
      * and greater
      * It will give a negative value, a zero value, or
      * a positive value respectively
+     * The way it is determined which is equal bigger or smaller is simply based on the amount
+     * of
      * @param other
      * @return Will give a positive, zero, or negative value when it is 
      * greater than, equal to, or less than respectively.
      */
     public int compareTo(TrainLine other) {
         int result = 0;
-        if(other.head != null) {
+        if(other != null) {
             result = this.numberOfStations - other.numberOfStations;
         }
         return result;
