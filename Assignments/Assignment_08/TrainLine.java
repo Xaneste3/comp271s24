@@ -218,4 +218,53 @@ public class TrainLine {
         }
     } // method append
 
+    /**
+     * This listStations method will list all of the current stations in this trainline.
+     * If TrainLine is empty then this method will return a message in quotes
+     * @return will be a string that has all station names in the trainline with only one station name per line
+     */
+    public String listStations() {
+        String answer;
+        if (this.head.equals(null)) {
+            answer =  "The line is empty";
+        }
+
+        else {
+        StringBuilder stationNames = new StringBuilder();
+        Station current = this.head;
+
+        while (current != null) {
+            stationNames.append(current.getName()).append("\n");
+            current = current.getNext();          
+        }
+
+        answer = stationNames.toString().trim();        
+    }
+    return answer;
+
+}
+
+    /**
+     * This method will check if two train lines cross over each other 
+     * @param is other, which means it will use the second train line to check if it intersects
+     * @return will be true if an intersection occurs and false if nothing happens
+     */
+    boolean intersects (TrainLine other) {
+        boolean result = false;
+        if (other != null && other.getHead() != null && this.head != null) {
+            Station currentThis = this.head;
+            while (currentThis != null && !result) {
+                Station currentOther = other.getHead();
+                if (currentThis.getName().equals(currentOther.getName())) {
+                    result = true;
+                }
+                currentOther = currentOther.getNext();
+            }
+                currentThis = currentThis.getNext();
+            
+        }
+        return result;
+    }
+
+    
 } // class TrainLine
