@@ -266,5 +266,21 @@ public class TrainLine {
         return result;
     }
 
-    
+    /**
+     * This compareTo method will look at two trainlines and see if one is smaller, equal
+     * and greater
+     * It will give a negative value, a zero value, or
+     * a positive value respectively
+     * @param other
+     * @return Will give a positive, zero, or negative value when it is 
+     * greater than, equal to, or less than respectively.
+     */
+    public int compareTo(TrainLine other) {
+        int result = 0;
+        if(other.head != null) {
+            result = this.numberOfStations - other.numberOfStations;
+        }
+        return result;
+
+    }
 } // class TrainLine
