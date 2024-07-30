@@ -1,19 +1,30 @@
 public class Hash271 {
 
+    /** This is the default value foe load factor */
+    private static final double DEFAULT_LOAD_FACTOR = 0.75;
+
     /** Default size for foundation array */
     private static final int DEFAULT_SIZE = 4;
+
+    /** The actual load factor */
+    private double loadFactor;
+
+    /** The amount of nodes that will be displayed through the hash table */
+    private int nodeCounter;
 
     /** Foundation array of node objects */
     Node[] foundation;
 
     /** Basic constructor */
-    public Hash271(int size) {
+    public Hash271(int size, double loadFactor) {
         this.foundation = new Node[size];
+        this.loadFactor = loadFactor;
+        this.nodeCounter = 0;
     } // basic constructor
 
     /** Default constructor */
     public Hash271() {
-        this(DEFAULT_SIZE);
+        this(DEFAULT_SIZE, DEFAULT_LOAD_FACTOR);
     } // default constructor
 
     /**
@@ -46,6 +57,17 @@ public class Hash271 {
             }
             // Put the new node to the array position
             this.foundation[destination] = node;
+
+            updateLoadFactor();
+            nodeCounter++;
+
+            /** This will be able to use the rehash method if
+             * decided by put method
+             */
+            if (loadFactor >= loadFactor) {
+                rehash();
+            }
+
         }
     } // method put
 
@@ -62,6 +84,26 @@ public class Hash271 {
             this.put(node);
         }
     } // method put
+
+    /**
+     * This method will update the loadFactor if need be
+     * from the put method
+     */
+    private void updateLoadFactor() {
+        this.loadFactor = (double) nodeCounter / this.foundation.length;
+    }
+
+    /**
+     * This method is in place if the load factor goes over
+     * the threshold that was decided. It will cause it to rehash
+     * foundation array that was put in earlier
+     * 
+     * @param rehash will happen if load factor goes over threshold,
+     *               changing the foundation array
+     */
+    private void rehash() {
+        
+    }
 
     /** String representation of this object */
     public String toString() {
