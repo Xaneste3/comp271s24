@@ -65,7 +65,7 @@ public class Hash271 {
              * decided by put method
              */
             if (loadFactor >= loadFactor) {
-                rehash();
+                rehash(0, foundation.length);
             }
 
         }
@@ -101,7 +101,29 @@ public class Hash271 {
      * @param rehash will happen if load factor goes over threshold,
      *               changing the foundation array
      */
-    private void rehash() {
+    private void rehash(int index, int length) {
+
+        if (index >= length) {
+            return;
+        }
+        Node[] prevFoundation = this.foundation;
+        
+        if (index == 0) {
+            this.foundation = new Node[prevFoundation.length * 2];
+            
+        }
+
+        Node current = prevFoundation[index];
+            while (current != null) {
+                Node next = current.getNext();
+                put(current);
+                //Will put new node into foundation array with rehashing
+                current.setNext(null);
+                //gets ride of the old node
+                current = next;
+            }
+
+            rehash(index + 1, length);
         
     }
 
