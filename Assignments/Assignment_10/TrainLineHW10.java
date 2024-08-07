@@ -132,6 +132,7 @@ public class TrainLineHW10 {
                     // Update the return variable to indicate a successful insertion
                     success = true;
                 }
+                current = current.getNext();
             }
         }
         return success;
@@ -264,6 +265,40 @@ public class TrainLineHW10 {
         }
         return intersectionFound;
     } // method intersects
+
+    /**
+     * Will return a string of the train station names that are
+     * now reversed and will also only traverse it once.
+     * 
+     * @return the stationlist that was in order will now be reversed 
+     *         and printed in the correct order.
+     */
+    public String stationsReversed() {
+        StringBuilder reversedStationList = new StringBuilder();
+        if(this.head != null) {
+        reverseTrainLine(this.head, reversedStationList);
+        }
+        else {
+            reversedStationList.append(EMPTY_LINE_MESSAGE);
+        }
+        return reversedStationList.toString();
+    }
+    //method stationsReversed
+
+    /**
+     * Last method that will aid in traversing down the trainline
+     * and will then make the original list reversed
+     * 
+     * @param current Is the station that will be put next into list
+     */
+    private void reverseTrainLine(Station current, StringBuilder result) {
+        if (current.getNext() != null) {
+            reverseTrainLine(current.getNext(), result);
+        }
+        result.append(current.getName()).append("\n");
+        //will use the StringBuilder to make the reversed trainline
+    }
+    // method reverseTrainLine
 
     /**
      * Compares two lines based on their number of train stations. 
